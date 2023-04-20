@@ -1,7 +1,8 @@
 ##Estudio geográfico y de categorías de productos: análisis de ventas y comportamiento del consumidor.
 
 # En este trabajo se presenta un análisis de datos de ventas utilizando diferentes herramientas de visualización para analizar las ventas por estado, categoría, segmento y mes/año. Además, se presenta un mapa territorial de las ventas por estado, lo que permite tener una visión más detallada de las ventas en cada región geográfica y detectar oportunidades de crecimiento en áreas específicas.
-
+## ANOTACION PARA EJECUTAR ESTE PROYECTO DESCARGA EL ARCHIVO DE KAGGLE COMPARTO LINK, Y LUEGO INDICA LA RUTA DEL ARCHIVO DONDE LO HAYAS DESCARGADO. Y DE IGUAL FORMA CON EL ARCHIVO JSON.
+#https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting?select=train.csv (ARCHIVO DE DATOS)
 
 
 
@@ -12,7 +13,7 @@ import folium
 import json
 
 # Leer archivo CSV
-ventas_df = pd.read_csv('C:/Users/danie/Desktop/train.csv')
+ventas_df = pd.read_csv('train.csv')
 
 # Seleccionar columnas necesarias y eliminar las no necesarias
 columnas = ["Ship Mode", "Segment", "Country", "City", "State", "Region", "Category", "Sub-Category", "Sales", "Order Date", "Ship Date"]
@@ -60,7 +61,7 @@ plt.show()
 
 # El tercer gráfico es un gráfico de barras verticales que muestra las ventas por segmento. Este gráfico nos muestra la proporción de ventas que provienen de cada segmento: consumidor, corporativo y hogar. En este caso, podemos ver que el segmento de consumidores es el que genera la mayoría de las ventas totales, seguido del segmento corporativo y hogar. Este tipo de información es muy valiosa para la empresa, ya que les permite enfocar sus esfuerzos de marketing en el segmento que está generando la mayoría de las ventas.
 sales_by_state = ventas_df.groupby("State")["Sales"].sum().reset_index()
-us_states = 'C:/Users/danie/Desktop/us-states.json'
+us_states = 'us-states.json'
 geo_json_data = json.load(open(us_states))
 map = folium.Map(location=[37,-102], zoom_start=4)
 folium.Choropleth(
